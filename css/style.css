@@ -59,6 +59,62 @@ body {
   	transition: background-color 0.2s;
 }
 
+/* Style for creationForm.php */
+.create-survey-form {
+    width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.create-survey-form h1 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #444;
+}
+
+.create-survey-form label {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+    text-align: left;
+}
+
+.create-survey-form input[type="text"], .create-survey-form input[type="email"], .create-survey-form select, .create-survey-form textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.create-survey-form input[type="submit"] {
+    display: inline-block;
+    padding: 10px 30px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #3274d6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.create-survey-form input[type="submit"]:hover {
+    background-color: #2868c7;
+    transition: background-color 0.2s;
+}
+
 .navtop {
 	background-color: #2f3947;
 	height: 60px;
