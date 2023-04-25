@@ -31,24 +31,41 @@ if (!isset($_SESSION['loggedin'])) {
 		<!-- tabs modded by sql question no -->
 		<!-- 2 current question types, mult choice & free response  -->
 		<?php
-			echo "<h3>Survey_title Here</h3>"; //get from db
-			$limit = 2;//get count from db
+			require_once '../includes/dbc.inc.php';//causes a 'Hello there' message, is there a better way?
+			
+			$surveyID = 1;//actual survey id would need to be carried over from browser selection
+			$sql = "SELECT title FROM survey WHERE survey_id = '".$surveyID."'";
+			$title = getDataElement($conn,$sql);
+			echo "<h3>",$title,"</h3>";
+
+			$sql = "SELECT COUNT(DISTINCT question_id) FROM question WHERE survey_id = '".$surveyID."'";
+			$limit = getDataElement($conn,$sql);
+
+			$sql = "SELECT DISTINCT question_id FROM question WHERE survey_id = '".$surveyID."'";
+			$arr = getDataArray($conn,$sql);
 			for ($i = 0; $i < $limit; $i++) { //limit is no. questions in survey
-				$question_text = "Question text here";//will get this from db
+				$sql = "SELECT question_text FROM question WHERE question_id ='".$arr[$i]."' AND survey_id = '".$surveyID."'";
+				$question_text = getDataElement($conn,$sql);//will get this from db
 				echo "<div class='tab'>",$question_text;
-				$question_type = "Free Response"; //may also be Multiple Choice; from db
-				//$question_type = "Multiple Choice";
+
+				$sql = "SELECT response_type FROM question WHERE question_id ='".$arr[$i]."' AND survey_id = '".$surveyID."'";
+				$question_type = getDataElement($conn,$sql); //may also be Multiple Choice; from db
 				//switch for response type
 				switch($question_type){
-				case "Free Response":
+				case 'free-response':
   					echo "<p><input placeholder='Please Type Response' oninput='this.className = '''></p>";
 					break;
-				case "Multiple Choice":
-					$option_limit = 5;//get count from db
+				case "multiple-choice":
+					$sql = "SELECT COUNT(DISTINCT option_id) FROM question_option WHERE option_type = 'multiple-choice' AND question_id = '".$arr[$i]."'";
+					$option_limit = getDataElement($conn,$sql);
+					
+					$sql = "SELECT DISTINCT option_id FROM question_option WHERE option_type = 'multiple-choice' AND question_id = '".$arr[$i]."'";
+					$option_arr = getDataArray($conn,$sql);
 					for ($j = 0; $j < $option_limit; $j++){
-						$option_text = "an option";
-						echo "<br><input type='radio' name =",$i," value='",$option_text,"' oninput='this.className = '''>",$option_text,"<br>";
-						//name will probably change from '$i' with backend
+						$sql = "SELECT option_text FROM question_option WHERE option_id = '".$option_arr[$j]."' AND question_id = '".$arr[$i]."'";
+						$option_text = getDataElement($conn,$sql);
+						echo "<input type='radio' name =",$i," value='",$option_text,"' oninput='this.className = '''>",$option_text;
+						//name may change from '$i' with backend
 					}
 					break;
 				default:
@@ -56,15 +73,26 @@ if (!isset($_SESSION['loggedin'])) {
 				}
   				echo "</div>";
 			}
+			//Handy PHP functions
+			function getDataElement($conn,$sql){ //get an element of data by performing a query on db			
+				$result = mysqli_query($conn, $sql);
+				while($row = mysqli_fetch_row($result)){
+					foreach($row as $value)
+						return $value;
+				}
+			}
+			function getDataArray($conn,$sql){
+				$res = mysqli_query($conn,$sql);
+				$arr_index = 0;
+				while($row = mysqli_fetch_row($res)){
+					foreach($row as $value){
+						$arr[$arr_index] = $value;
+						//echo $arr[$arr_index];
+						$arr_index++;}} return $arr;
+			}
+			
 		?>
 
-		<div class="tab">Question test: <!-- remove this example when backend added-->
- 			<br><input type="radio" name="choice" value="1">1<br>
-			<input type="radio" value="2" oninput='this.className = ''>2<br>
-			<input type="radio" value="3" oninput='this.className = ''>3<br>
-			<input type="radio" value="4" oninput='this.className = ''>4<br>
-			<input type="radio" value="5" oninput='this.className = ''>5
-		</div>
 		<div style="overflow:auto;">
   			<div style="float:right;">
     				<button type="button" id="prevButton" onclick="nextPrev(-1)">Previous</button>
@@ -76,11 +104,10 @@ if (!isset($_SESSION['loggedin'])) {
 			<?php
 			for ($i = 0; $i < $limit; $i++){
   				echo "<span class='step'></span>";}
-  			echo "<span class='step'></span>";//remove with example later
 			?>
 		</div>
 		</form>
-		<!-- JavaScript to be moved or replaced if need be -->
+		<!-- JavaScript and php function can be moved or replaced if need be -->
 		<script>
 			var currentTab = 0; // Current tab is set to be first(0)
 			displayTab(currentTab); // Display current tab
