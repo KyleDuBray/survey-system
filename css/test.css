@@ -1,0 +1,41 @@
+#surveyForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+input {
+  padding: 10px;
+  width: 100%;
+}
+input.invalid {
+  background-color: #ffdddd;
+}
+h3 {
+  text-align: center;  
+}
+/* The above functioned only when I ran it through replit; a conflict? */
+/* Hide all steps for multi-step form */
+.tab {
+  display: none;
+}
+/* Circle indicators for form steps */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+/* Mark current step */
+.step.active {
+  opacity: 1;
+}
+/* Mark steps that are finished and valid */
+.step.finish {
+  background-color: #04AA6D;
+}
