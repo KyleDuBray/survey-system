@@ -4,6 +4,7 @@ if (!isset($_POST['submit'])) {
 header("location: ../public/login.php");
 }
 */
+
 require_once 'dbc.inc.php';
 require_once 'functions.inc.php';
 
@@ -53,4 +54,16 @@ foreach ($question_texts as $text) {
     }
     // increment question index
     $questionIndex++;
+}
+
+function createSurvey(
+    $conn,
+    $user_id,
+    $survey_title,
+    $question_types,
+    $question_texts,
+    $question_options,
+    $option_count_for_question
+) {
+    $sql_insert_survey = "INSERT INTO survey(creator_id, title) VALUES(?, ?);";
 }
