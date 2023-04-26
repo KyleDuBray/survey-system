@@ -19,7 +19,7 @@ VALUES
 # The following queries to create the question options assume
 #   that the previous queries are the first three created,
 #   and use IDs accordingly.
-INSERT INTO question_option(question_id, option_type, option_Text)
+INSERT INTO question_option(question_id, option_type, option_text)
 VALUES (1, "multiple-choice","burger"),
 (1, "multiple-choice", "pizza"),
 (1, "multiple-choice", "hot dog"),
