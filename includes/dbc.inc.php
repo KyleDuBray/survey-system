@@ -10,8 +10,6 @@ $DB_HOST = $_ENV['DB_HOST'];
 $DB_PORT = $_ENV['DB_PORT'];
 $DB_NAME = $_ENV['DB_NAME'];
 
-echo "Hello there" . "<br>";
-
 
 $host = $DB_HOST . ":" . $DB_PORT;
 $dbUsername = $DB_USER;
