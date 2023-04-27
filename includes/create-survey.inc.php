@@ -1,9 +1,5 @@
 <?php
-/*
-if (!isset($_POST['submit'])) {
-header("location: ../public/login.php");
-}
-*/
+
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
@@ -74,6 +70,16 @@ createSurvey(
     $option_count_for_question
 );
 
+// Handles database insertions for survey creatopm
+// $conn - database connection
+// $user_id - id of logged in user who created survey (from _SESSION)
+// $survey_title - name of survey (from _POST)
+// $question_types - array of question types in order (from _POST)
+// $question_texts - array of question texts in order (from _POST)
+// $question_options - array of question options in order (from _POST)
+//          - "free-response" questions will always have a single "NULL" question option
+// $option_count_for_question- array of integer values of option counts for multiple-
+//          - choice questions
 function createSurvey(
     $conn,
     $user_id,
@@ -95,13 +101,6 @@ function createSurvey(
     mysqli_stmt_close($stmt);
     $survey_id = mysqli_insert_id($conn);
 
-
-    $sql_insert_question = "INSERT INTO question(survey_id, question_text, response_type)
-    VALUES(?, ?, ?);";
-
-    $sql_insert_option = "INSERT INTO question_option(question_id, option_type, option_text)
-    VALUES(?, ?, ?);";
-
     // Insert Questions
     $questionIndex = 0;
     $optionsIndex = 0;
@@ -118,7 +117,7 @@ VALUES(?,?,?);");
     foreach ($question_texts as $text) {
         // maintain consistency in reponse type insertions
         if ($question_types[$questionIndex] === "multiple_choice") {
-            $current_question_type =  "multiple-choice";
+            $current_question_type = "multiple-choice";
         } else {
             $current_question_type = "free-response";
         }
