@@ -2,6 +2,7 @@
 
 // helper functions
 
+// checks if inputs empty for registration
 function inputsEmpty($username, $email, $password, $confirmpassword)
 {
     $result = false;
@@ -11,6 +12,7 @@ function inputsEmpty($username, $email, $password, $confirmpassword)
     return $result;
 }
 
+// checks if inputs empty for login
 function inputsEmptyLogin($username, $password)
 {
     $result = false;
@@ -38,6 +40,7 @@ function invalidEmail($email)
     return $result;
 }
 
+// used for password confirmation
 function passwordsDifferent($password, $confirmpassword)
 {
     $result = false;
@@ -47,6 +50,9 @@ function passwordsDifferent($password, $confirmpassword)
     return $result;
 }
 
+// checks if user exists in database-
+// used in both login (to allow, if user exists) 
+// and registration (to deny, if user exists)
 function userExists($conn, $username, $email)
 {
     $sql = "SELECT * FROM user WHERE username = ? OR email = ?";
@@ -72,6 +78,7 @@ function userExists($conn, $username, $email)
 
 }
 
+// performs database insertions for user creation
 function createUser($conn, $username, $email, $password)
 {
     $sql = "INSERT INTO user (username, email, password) VALUES (?,?,?);";
@@ -92,6 +99,7 @@ function createUser($conn, $username, $email, $password)
     header("location: ../public/register.php?error=none");
 }
 
+// handles user login, starts session
 function loginUser($conn, $username, $password)
 {
     $userExists = userExists($conn, $username, $username);
