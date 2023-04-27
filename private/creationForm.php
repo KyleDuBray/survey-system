@@ -37,6 +37,17 @@
         <button type="button" id="add-question" class="btn">Add Question</button>
         <button type="submit" id="submit-survey" class="btn" style="display: none;">Submit Survey</button>
       </form>
+      <?php
+      if (isset($_GET["error"])) {
+        switch ($_GET["error"]) {
+          case "invalidinput":
+            echo "<p class=error>Please fill in all fields.</p>";
+            break;
+          default:
+            break;
+        }
+      }
+      ?>
     </div>
   </div>
   <script>

@@ -89,6 +89,8 @@ function createSurvey(
     $question_options,
     $option_count_for_question
 ) {
+    // Validate title
+    $survey_title = validate($survey_title);
     // Insert Survey
     $sql_insert_survey = "INSERT INTO survey(creator_id, title) VALUES(?, ?);";
     $stmt = mysqli_stmt_init($conn);
@@ -105,7 +107,7 @@ function createSurvey(
     $questionIndex = 0;
     $optionsIndex = 0;
 
-    // Start SQL Statements
+    // Prepare SQL Statements
     $stmt_insert_question = $conn->prepare("INSERT INTO question(survey_id, question_text, response_type) 
 VALUES(?, ?, ?);");
 
@@ -115,6 +117,8 @@ VALUES(?,?,?);");
     $current_question_type = "";
     // loop through all questions
     foreach ($question_texts as $text) {
+        // Validate question text
+        $text = validate($text);
         // maintain consistency in reponse type insertions
         if ($question_types[$questionIndex] === "multiple_choice") {
             $current_question_type = "multiple-choice";
@@ -135,6 +139,9 @@ VALUES(?,?,?);");
                 $i < $j + intval($option_count_for_question[$questionIndex]);
                 $i++
             ) {
+                // validate option
+                $question_options[$i] = validate($question_options[$i]);
+                // make insertion and move on to next option
                 $stmt_insert_option->bind_param('sss', $question_id, $current_question_type, $question_options[$i]);
                 $stmt_insert_option->execute();
                 $optionsIndex++;
@@ -150,4 +157,14 @@ VALUES(?,?,?);");
     }
 
     $conn->close();
+}
+
+function validate($data)
+{
+    if (isEmpty($data)) {
+        header("location: ../private/creationForm.php?error=invalidinput");
+        exit();
+    }
+    return test_input($data);
+
 }
