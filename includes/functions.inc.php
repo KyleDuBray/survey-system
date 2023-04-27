@@ -124,3 +124,29 @@ function loginUser($conn, $username, $password)
     $_SESSION['id'] = $userExists['user_id'];
     header("location: ../private/home.php");
 }
+
+// SURVEY CREATION VALIDATION
+
+
+function test_input($data)
+{
+    $data = trim($data);
+    $data = removeslashes($data);
+    $data = htmlspecialchars($data);
+    $data = strip_tags($data);
+    return $data;
+}
+
+function removeslashes($string)
+{
+    $string = implode("", explode("\\", $string));
+    return stripslashes(trim($string));
+}
+
+function isEmpty($var)
+{
+    // 0 will cause "true" return, so factor that out.
+    if ($var === 0)
+        return false;
+    return empty($var);
+}
