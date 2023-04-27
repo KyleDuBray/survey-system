@@ -30,35 +30,38 @@ $question_texts = $_POST['question_text'];
 $question_options = $_POST['question_options'];
 $option_count_for_question = $_POST['options_count'];
 
+
+/* Not used- basic echo output of survey
 echo $survey_title;
 echo "<br>";
 $questionIndex = 0;
 $optionsIndex = 0;
 // loop through all questions
 foreach ($question_texts as $text) {
-    // output question text
-    echo $text;
-    echo "<br>";
-    // if current questions is of multiple choice type
-    if ($question_types[$questionIndex] === "multiple_choice") {
-        // print current option and incremement for next one
-        // until all options for current question are listed
-        for (
-            $i = $optionsIndex, $j = $optionsIndex;
-            $i < $j + intval($option_count_for_question[$questionIndex]);
-            $i++
-        ) {
-            echo $question_options[$i];
-            echo "<br>";
-            $optionsIndex++;
-        }
-        // otherwise, only increment options index
-    } else {
-        $optionsIndex++;
-    }
-    // increment question index
-    $questionIndex++;
+// output question text
+echo $text;
+echo "<br>";
+// if current questions is of multiple choice type
+if ($question_types[$questionIndex] === "multiple_choice") {
+// print current option and incremement for next one
+// until all options for current question are listed
+for (
+$i = $optionsIndex, $j = $optionsIndex;
+$i < $j + intval($option_count_for_question[$questionIndex]);
+$i++
+) {
+echo $question_options[$i];
+echo "<br>";
+$optionsIndex++;
 }
+// otherwise, only increment options index
+} else {
+$optionsIndex++;
+}
+// increment question index
+$questionIndex++;
+}
+*/
 
 createSurvey(
     $conn,
@@ -157,8 +160,11 @@ VALUES(?,?,?);");
     }
 
     $conn->close();
+    header("location: ../private/mysurveys.php");
 }
 
+// uses functions from "../includes/functions.inc.php for basic validation
+// and sanitization
 function validate($data)
 {
     if (isEmpty($data)) {
