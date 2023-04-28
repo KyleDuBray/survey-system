@@ -29,13 +29,14 @@ if (!isset($_SESSION['loggedin'])) {
 		</div>
 	</nav>
 	<div class="content">
-		<form id="surveyForm" action="">
+		<form id="surveyForm" method="post" action="../includes/take-survey.inc.php">
 			<!-- tabs modded by sql question no -->
 			<!-- 2 current question types, mult choice & free response  -->
 			<?php
 			require_once '../includes/dbc.inc.php'; //causes a 'Hello there' message, is there a better way?
 			
 			$surveyID = 1; //actual survey id would need to be carried over from browser selection
+			$_SESSION['surveyid'] = $surveyID;
 			$sql = "SELECT title FROM survey WHERE survey_id = '" . $surveyID . "'";
 			$title = getDataElement($conn, $sql);
 			echo "<h3>", $title, "</h3>";
@@ -55,7 +56,7 @@ if (!isset($_SESSION['loggedin'])) {
 				//switch for response type
 				switch ($question_type) {
 					case 'free-response':
-						echo "<p><input placeholder='Please Type Response' oninput='this.className = '''></p>";
+						echo "<p><input name=", $arr[$i], " placeholder='Please Type Response' oninput='this.className = '''></p>";
 						break;
 					case "multiple-choice":
 						$sql = "SELECT COUNT(DISTINCT option_id) FROM question_option WHERE option_type = 'multiple-choice' AND question_id = '" . $arr[$i] . "'";
@@ -66,7 +67,7 @@ if (!isset($_SESSION['loggedin'])) {
 						for ($j = 0; $j < $option_limit; $j++) {
 							$sql = "SELECT option_text FROM question_option WHERE option_id = '" . $option_arr[$j] . "' AND question_id = '" . $arr[$i] . "'";
 							$option_text = getDataElement($conn, $sql);
-							echo "<input type='radio' name =", $i, " value='", $option_text, "' oninput='this.className = '''>", $option_text;
+							echo "<input type='radio' name =", $arr[$i], " value='",$option_text, "' oninput='this.className = '''>", $option_text;
 							//name may change from '$i' with backend
 						}
 						break;
