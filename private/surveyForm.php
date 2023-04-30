@@ -15,26 +15,19 @@ if (!isset($_SESSION['loggedin'])) {
 	<meta charset="utf-8">
 	<title>Survey</title>
 	<link href="../css/test.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link href="../css/private.surveyform.css" rel="stylesheet" type="text/css">
 </head>
 
 <body class="loggedin">
-	<nav class="navtop">
-		<div>
-			<h1>uForms</h1>
-			<a href="../private/profile.php"><i class="fas fa-user-circle"></i>Profile</a>
-			<a href="../includes/logout.inc.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
-		</div>
-	</nav>
+	<?php include "../shared/navbar.php" ?>
 	<div class="content">
-		<form id="surveyForm" method="post" action="../includes/take-survey.inc.php">
+		<form id="surveyForm" method="post" action=<?php echo "../includes/take-survey.inc.php?survey_id=" . $_GET['survey_id'] ?>>
 			<!-- tabs modded by sql question no -->
 			<!-- 2 current question types, mult choice & free response  -->
 			<?php
 			require_once '../includes/dbc.inc.php'; //causes a 'Hello there' message, is there a better way?
-
-			$surveyID = 1; //actual survey id would need to be carried over from browser selection
-			$_GET['surveyid'] = $surveyID;
+			
+			$surveyID = $_GET['survey_id']; //actual survey id would need to be carried over from browser selection
 			$sql = "SELECT title FROM survey WHERE survey_id = '" . $surveyID . "'";
 			$title = getDataElement($conn, $sql);
 			echo "<h3>", $title, "</h3>";

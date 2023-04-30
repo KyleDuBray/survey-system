@@ -9,6 +9,7 @@
 </head>
 
 <body>
+  <?php include "../shared/navbar.php"; ?>
   <div class="login">
     <h2>Login</h2>
     <form action="../includes/login.inc.php" method="post">

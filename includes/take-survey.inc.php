@@ -17,7 +17,7 @@ foreach ($_POST as $key => $value) {
 
     $qID = $key;
     $textresp = $value;
-    $sID = $_SESSION['surveyid'];
+    $sID = $_GET['survey_id'];
     $uID = $_SESSION['id'];
 
     $query = "SELECT option_type FROM question_option WHERE question_id ='" . $qID . "'";
@@ -38,6 +38,9 @@ VALUES('$sID', '$qID', '$oID', '$uID', '$textresp')";
 
     //echo "{$question_type}<br>";
 }
+
+$conn->close();
+header("location: ../private/home.php");
 
 function getDataElement($conn, $sql)
 { //get an element of data by performing a query on db			

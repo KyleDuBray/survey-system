@@ -1,0 +1,55 @@
+@import "global.css";
+
+.register-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.register {
+  margin-top: 15vh;
+  width: 500px;
+  background-color: #fefefe;
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.register-heading {
+  font-size: 20px;
+  text-align: center;
+  margin: 15px;
+}
+
+.register-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.register-form-input {
+  border-radius: 4px;
+  margin: 10px 0;
+  height: 40px;
+  padding: 3px 15px;
+  margin: 15px 30px;
+}
+
+.register-form-submit {
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+  background-color: #67ba07;
+  height: 50px;
+}
+
+.register-form-submit:hover {
+  background-color: #5da806;
+}
+
+.error {
+  color: #ff3333;
+}

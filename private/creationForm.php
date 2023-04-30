@@ -1,3 +1,14 @@
+<?php
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['loggedin'])) {
+  header("location: ../public/login.php");
+  exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -5,10 +16,10 @@
   <title>Create Survey</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link href="../css/style.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
 </head>
 
 <body>
+  <?php include "../shared/navbar.php" ?>
   <div class="create-survey-form">
     <div class="container">
       <h1>Create Survey</h1>
