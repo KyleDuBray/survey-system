@@ -13,21 +13,20 @@ require_once 'functions.inc.php';
 //echo var_dump($_POST);
 //echo var_dump($_SESSION);
 
-foreach($_POST as $key => $value) {
+foreach ($_POST as $key => $value) {
 
     $qID = $key;
     $textresp = $value;
     $sID = $_SESSION['surveyid'];
     $uID = $_SESSION['id'];
-    
+
     $query = "SELECT option_type FROM question_option WHERE question_id ='" . $qID . "'";
     $question_type = getDataElement($conn, $query);
 
     if ($question_type == 'free-response') {
         $query2 = "SELECT option_id FROM question_option WHERE question_id ='" . $qID . "'";
         $oID = getDataElement($conn, $query2);
-    }
-    else {
+    } else {
         $query3 = "SELECT option_id FROM question_option WHERE question_id ='" . $qID . "' AND option_text = '" . $textresp . "'";
         $oID = getDataElement($conn, $query3);
     }
@@ -42,9 +41,9 @@ VALUES('$sID', '$qID', '$oID', '$uID', '$textresp')";
 
 function getDataElement($conn, $sql)
 { //get an element of data by performing a query on db			
-	$result = mysqli_query($conn, $sql);
-	while ($row = mysqli_fetch_row($result)) {
-		foreach ($row as $value)
-			return $value;
-	}
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_row($result)) {
+        foreach ($row as $value)
+            return $value;
+    }
 }

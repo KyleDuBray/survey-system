@@ -15,9 +15,7 @@ if (!isset($_SESSION['loggedin'])) {
 	<meta charset="utf-8">
 	<title>Survey</title>
 	<link href="../css/test.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-		integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-		crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 
 <body class="loggedin">
@@ -34,9 +32,9 @@ if (!isset($_SESSION['loggedin'])) {
 			<!-- 2 current question types, mult choice & free response  -->
 			<?php
 			require_once '../includes/dbc.inc.php'; //causes a 'Hello there' message, is there a better way?
-			
+
 			$surveyID = 1; //actual survey id would need to be carried over from browser selection
-			$_SESSION['surveyid'] = $surveyID;
+			$_GET['surveyid'] = $surveyID;
 			$sql = "SELECT title FROM survey WHERE survey_id = '" . $surveyID . "'";
 			$title = getDataElement($conn, $sql);
 			echo "<h3>", $title, "</h3>";
@@ -67,7 +65,7 @@ if (!isset($_SESSION['loggedin'])) {
 						for ($j = 0; $j < $option_limit; $j++) {
 							$sql = "SELECT option_text FROM question_option WHERE option_id = '" . $option_arr[$j] . "' AND question_id = '" . $arr[$i] . "'";
 							$option_text = getDataElement($conn, $sql);
-							echo "<input type='radio' name =", $arr[$i], " value='",$option_text, "' oninput='this.className = '''>", $option_text;
+							echo "<input type='radio' name =", $arr[$i], " value='", $option_text, "' oninput='this.className = '''>", $option_text;
 							//name may change from '$i' with backend
 						}
 						break;
@@ -121,19 +119,17 @@ if (!isset($_SESSION['loggedin'])) {
 			var currentTab = 0; // Current tab is set to be first(0)
 			displayTab(currentTab); // Display current tab
 
-			function displayTab(n) {//function displays a tab of the form, buttons, & step indicator
+			function displayTab(n) { //function displays a tab of the form, buttons, & step indicator
 				var x = document.getElementsByClassName("tab");
 				x[n].style.display = "block";
 				if (n == 0) {
 					document.getElementById("prevButton").style.display = "none";
-				}
-				else {
+				} else {
 					document.getElementById("prevButton").style.display = "inline";
 				}
 				if (n == (x.length - 1)) {
 					document.getElementById("nextButton").innerHTML = "Submit";
-				}
-				else {
+				} else {
 					document.getElementById("nextButton").innerHTML = "Next";
 				}
 				setStep(n);
