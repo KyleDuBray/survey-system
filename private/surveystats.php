@@ -60,10 +60,11 @@
         // - list all responses (later will need to change to only certain amount, with ability to view more)
         // - set newQuestion to true
         if ($row['response_type'] === "free-response") {
+            echo "<ul>";
             $responses = getFreeResponses($conn, $survey_id, $curQuestionId);
             // list free responses
             while ($res = mysqli_fetch_assoc($responses)) {
-                echo $res['response_text'];
+                echo "<li>" . $res['response_text'] . "</li>";
             }
             $newQuestion = true;
         }
