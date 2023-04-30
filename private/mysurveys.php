@@ -27,8 +27,13 @@
     while ($row = mysqli_fetch_assoc($result)) //Get row from database table
     {
         echo "<br>";
-        echo $row['title'];
+        createSurveyLink($row['survey_id'], $row['title']);
         echo "<br>";
+    }
+
+    function createSurveyLink($id, $title)
+    {
+        echo "<a href='./surveystats.php?survey_id=" . $id . "'>" . $title . "</a>";
     }
     ?>
 </body>
