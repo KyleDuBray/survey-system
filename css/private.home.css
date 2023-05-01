@@ -1,0 +1,45 @@
+@import "global.css";
+
+.home-links {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.home-link {
+  text-decoration: none;
+  color: inherit;
+  margin: 0 5px;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+}
+
+.home-link-container {
+  border: 1px solid #e0e0e3;
+  padding: 100px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25);
+  height: 425px;
+}
+
+img {
+  width: 100px;
+}
+
+h3 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  text-align: center;
+  width: 200px;
+  margin-top: 10px;
+}

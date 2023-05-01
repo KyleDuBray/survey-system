@@ -15,6 +15,7 @@ if (!isset($_SESSION['loggedin'])) {
 	<meta charset="utf-8">
 	<title>Home Page</title>
 	<link href="../css/style.css" rel="stylesheet" type="text/css">
+	<link href="../css/private.home.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -23,6 +24,35 @@ if (!isset($_SESSION['loggedin'])) {
 		<h2>Welcome,
 			<?php echo $_SESSION['username'] ?>!
 		</h2>
+	</div>
+	<div class="home-links">
+		<a href="./browsesurveys.php" class="home-link">
+			<div class="home-link-container">
+				<h3>Browse Surveys</h3>
+				<div class="icon-container">
+					<img src="../img/clipboard-take-survey.svg">
+				</div>
+				<p>Pick from a list of surveys available for the taking</p>
+			</div>
+		</a>
+		<a href="./creationForm.php" class="home-link">
+			<div class="home-link-container">
+				<h3>Create a Survey</h3>
+				<div class="icon-container">
+					<img src="../img/clipboard-create-survey.svg">
+				</div>
+				<p>Create a new custom survey</p>
+			</div>
+		</a>
+		<a href="./mysurveys.php" class="home-link">
+			<div class="home-link-container">
+				<h3>My Surveys</h3>
+				<div class="icon-container">
+					<img src="../img/clipboard-my-surveys.svg">
+				</div>
+				<p>View statistics for your created surveys</p>
+			</div>
+		</a>
 	</div>
 </body>
 
