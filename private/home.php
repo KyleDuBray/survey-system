@@ -3,7 +3,7 @@
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: ../index.php');
+	header('Location: ../public/home.php');
 	exit;
 }
 ?>
@@ -14,23 +14,45 @@ if (!isset($_SESSION['loggedin'])) {
 <head>
 	<meta charset="utf-8">
 	<title>Home Page</title>
-	<link href="style.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link href="../css/public.style.css" rel="stylesheet" type="text/css">
+	<link href="../css/private.home.css" rel="stylesheet" type="text/css">
 </head>
 
-<body class="loggedin">
-	<nav class="navtop">
-		<div>
-			<h1>uForms</h1>
-			<a href="../private/profile.php"><i class="fas fa-user-circle"></i>Profile</a>
-			<a href="../includes/logout.inc.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
-		</div>
-	</nav>
+<body>
+	<?php include "../shared/navbar.php" ?>
 	<div class="content">
-		<h2>Welcome</h2>
-		<p>Hello
+		<h2>Welcome,
 			<?php echo $_SESSION['username'] ?>!
-		</p>
+		</h2>
+	</div>
+	<div class="home-links">
+		<a href="./browsesurveys.php" class="home-link">
+			<div class="home-link-container">
+				<h3>Browse Surveys</h3>
+				<div class="icon-container">
+					<img src="../img/clipboard-take-survey.svg">
+				</div>
+				<p>Pick from a list of surveys available for the taking</p>
+			</div>
+		</a>
+		<a href="./creationForm.php" class="home-link">
+			<div class="home-link-container">
+				<h3>Create a Survey</h3>
+				<div class="icon-container">
+					<img src="../img/clipboard-create-survey.svg">
+				</div>
+				<p>Create a new custom survey</p>
+			</div>
+		</a>
+		<a href="./mysurveys.php" class="home-link">
+			<div class="home-link-container">
+				<h3>My Surveys</h3>
+				<div class="icon-container">
+					<img src="../img/clipboard-my-surveys.svg">
+				</div>
+				<p>View statistics for your created surveys</p>
+			</div>
+		</a>
 	</div>
 </body>
 

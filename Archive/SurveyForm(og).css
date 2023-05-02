@@ -1,0 +1,87 @@
+* {
+  	box-sizing: border-box;
+  	font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+  	font-size: 16px;
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-image: url('bg1.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: repeat-y;
+  width: 100%; /* Set the width to fill the entire viewport */
+  background-color: #ffffff;
+  text-align: center; /* Center the contents horizontally */
+}
+
+
+/*borders for box*/
+.survey {
+  width: 1200px;
+  background-color: #ff6600;
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+  margin: 100px auto; /* Center the login box vertically */
+  border: 8px solid;
+  border-color: #ffff00;
+}
+
+/*Title of box*/
+.survey h1 {
+  	text-align: center;
+  	font-family:cursive; 
+  	text-shadow: 2px 2px black;
+  	color: #ffffff;
+  	font-size: 24px;
+  	padding: 20px 0 20px 0; 	
+}
+
+
+.survey h2 {
+  	text-align: center;
+  	font-family:cursive; 
+  	text-shadow: 2px 2px black;
+  	color: #ffffff;
+  	font-size: 24px;
+  	padding: 20px 0 20px 0; 	
+}
+
+.survey h3{
+  	text-align: center;
+  	font-family:cursive; 
+  	text-shadow: 1px 1px black;
+  	color: #6600cc;
+  	font-size: 18px;
+  	padding: 20px 0 20px 0; 	
+}
+
+.survey option_text{
+  	text-align: center;
+  	font-family:cursive; 
+  	text-shadow: 2px 2px black;
+  	color: #ffffff;
+  	font-size: 12px;
+  	padding: 20px 0 20px 0; 	
+}
+
+
+/*Button Formatting*/
+.survey button[type="button"] {
+  	width: 100%;
+  	padding: 15px;
+ 	margin-top: 20px;
+  	background-color: #6600cc;
+  	border: 0;
+  	cursor: pointer;
+  	font-weight: bold;
+  	color: #ffffff;
+  	transition: background-color 0.2s;
+  	font-family:cursive;
+}
+
+/*Hovering Button*/
+.survey button[type="button"]:hover {
+	background-color: #bd2ff5;
+  	transition: background-color 0.2s;
+}

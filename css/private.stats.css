@@ -1,0 +1,24 @@
+@import "global.css";
+
+.border{
+  width: 100%;
+  background-color: #ff6600;
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+  border: 8px solid;
+  border-color: #ffff00;
+  font-family:cursive; 
+  color: #ffff00;
+  text-align: center;
+}
+
+  h1{text-align: center;
+    font-family:cursive; 
+    color: #ffff00;
+    font-size: 24px;
+    padding: 20px 0 20px 0;}
+
+  h3{ text-align: center;
+  font-family:cursive; 
+  color: #6600cc;
+  font-size: 24px;
+  padding: 20px 0 20px 0;}

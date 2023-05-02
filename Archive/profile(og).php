@@ -14,15 +14,20 @@ if (!isset($_SESSION['loggedin'])) {
 
 <head>
 	<meta charset="utf-8">
+	 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Profile Page</title>
-	<link href="../css/public.style.css" rel="stylesheet" type="text/css">
+	<link href="../css/profile.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
 </head>
 
-<body class="loggedin">
-	<?php include "../shared/navbar.php" ?>
-	<div class="content">
-		<h2>Profile Page</h2>
-		<div>
+<body>
+	 <div style="text-align: center;">
+	 <div class="profile">
+			<h1>uForms</h1>
+			<a href="../private/profile.php"><i class="fas fa-user-circle"></i>Profile</a>
+ 			<a href="../includes/logout.inc.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+		<h1>Profile Page</h1>
 			<p>Your account details are below:</p>
 			<table>
 				<tr>
@@ -44,8 +49,8 @@ if (!isset($_SESSION['loggedin'])) {
 					</td>
 				</tr>
 			</table>
-		</div>
-	</div>
+</div>
+</div>
 </body>
 
 </html>

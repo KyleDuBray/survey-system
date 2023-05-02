@@ -1,0 +1,63 @@
+* {
+  	box-sizing: border-box;
+  	font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+  	font-size: 16px;
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-image: url('bg1.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: repeat-y;
+  width: 100%; /* Set the width to fill the entire viewport */
+  background-color: #ffffff;
+  text-align: center; /* Center the contents horizontally */
+}
+
+
+/*borders for box*/
+.home{
+  width: 400px;
+  background-color: #ff6600;
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+  margin: 100px auto; /* Center the login box vertically */
+  border: 8px solid;
+  border-color: #ffff00;
+}
+
+
+.home h1 {
+	text-align: center;
+  	font-family:cursive; 
+  	text-shadow: 2px 2px black;
+  	color: #ffffff;
+  	font-size: 24px;
+  	padding: 20px 0 20px 0; 
+}
+
+
+.home p {
+	text-align: center;
+  	font-family:cursive; 
+  	text-shadow: 1px 1px black;
+  	color: #6600cc;
+  	font-size: 24px;
+  	padding: 20px 0 20px 0; 
+}
+
+
+.home div a i {
+	text-align: center;
+  	font-family:cursive; 
+  	text-shadow: 2px 2px black;
+  	color: #ffffff;
+  	font-size: 24px;
+  	padding: 20px 0 20px 0; 
+	
+}
+
+.home div a:hover {
+	color: #bd2ff5;
+}

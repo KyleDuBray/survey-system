@@ -1,0 +1,98 @@
+* {
+  	box-sizing: border-box;
+  	font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+  	font-size: 16px;
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-image: url('bg1.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: repeat-y;
+  width: 100%; /* Set the width to fill the entire viewport */
+  background-color: #ffffff;
+  text-align: center; /* Center the contents horizontally */
+}
+
+/* Style for creationForm.php */
+.create-survey-form {
+    width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color:  #ff6600;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    text-align: center;
+    border: 8px solid;
+    border-color:#ffff00;
+}
+
+.create-survey-form h1 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #ffffff;;
+    font-family:cursive; 
+}
+
+.create-survey-form label {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffff00;
+    text-align: left;
+    font-family:cursive; 
+}
+
+.create-survey-form input[type="text"], .create-survey-form input[type="email"], .create-survey-form select, .create-survey-form textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.create-survey-form button[type="submit"] {
+    display: inline-block;
+    padding: 10px 30px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #6600cc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-family:cursive; 
+}
+
+.create-survey-form button[type="submit"]:hover {
+    background-color: #bd2ff5;
+    transition: background-color 0.2s;
+}
+
+.create-survey-form button[type="button"] {
+    display: inline-block;
+    padding: 10px 30px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #6600cc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-family:cursive; 
+}
+
+.create-survey-form button[type="button"]:hover {
+    background-color: #bd2ff5;
+    transition: background-color 0.2s;
+}

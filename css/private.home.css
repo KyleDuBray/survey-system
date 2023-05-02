@@ -1,0 +1,50 @@
+@import "global.css";
+
+.home-links {
+  width: 80%;
+  display: flex;
+  margin-top: 10px;
+  background-color: #ff6600;
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+  border: 8px solid;
+  border-color: #ffff00;
+  margin: 100px auto; /* Center the login box vertically */
+}
+
+.home-link {
+  text-decoration: none;
+  color: inherit;
+  
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+}
+
+.home-link-container {
+  
+  padding: 100px;
+  height: 375px;
+}
+
+img {
+  width: 100px;
+}
+
+h3 {
+  text-align: center;
+  font-family:cursive; 
+  color: #6600cc;
+  font-size: 24px;
+  padding: 20px 0 20px 0; 	
+}
+
+p {
+  text-align: center;
+  width: 200px;
+  margin-top: 10px;
+  color: #ffff00;
+  font-family:cursive; 
+  
+}

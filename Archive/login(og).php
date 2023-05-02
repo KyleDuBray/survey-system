@@ -4,14 +4,13 @@
 <head>
   <meta charset="utf-8" />
   <title>Login</title>
-  <link href="../css/public.style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/login.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
 </head>
 
 <body>
-<?php include "../shared/navbar.php"; ?>
   <div class="login">
-    <h2>Login</h2>
+    <h1>Login</h1>
     <form action="../includes/login.inc.php" method="post">
       <label for="username">
         <i class="fas fa-user"></i>

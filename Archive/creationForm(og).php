@@ -1,25 +1,14 @@
-<?php
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-// If the user is not logged in redirect to the login page...
-if (!isset($_SESSION['loggedin'])) {
-  header("location: ../public/login.php");
-  exit;
-}
-
-?>
-
 <!DOCTYPE html>
 <html>
 
 <head>
   <title>Create Survey</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <link href="../css/public.style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/creation.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
 </head>
 
 <body>
-  <?php include "../shared/navbar.php" ?>
   <div class="create-survey-form">
     <div class="container">
       <h1>Create Survey</h1>
@@ -48,19 +37,7 @@ if (!isset($_SESSION['loggedin'])) {
         <button type="button" id="add-question" class="btn">Add Question</button>
         <button type="submit" id="submit-survey" class="btn" style="display: none;">Submit Survey</button>
       </form>
-      <?php
-      if (isset($_GET["error"])) {
-        switch ($_GET["error"]) {
-          case "invalidinput":
-            echo "<p class=error>Please fill in all fields.</p>";
-            break;
-          default:
-            break;
-        }
-      }
-      ?>
-    </div>
-  </div>
+    
   <script>
     $(document).ready(function () {
       var questionCount = 1;
@@ -156,6 +133,8 @@ if (!isset($_SESSION['loggedin'])) {
       */
     });
   </script>
+  </div>
+  </div>
 </body>
 
 </html>
