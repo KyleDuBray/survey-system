@@ -7,18 +7,21 @@
 }
 input {
   padding: 10px;
-  width: 100%;
+  margin: 3px 5px;
+  cursor: pointer;
 }
 input.invalid {
   background-color: #ffdddd;
 }
 h3 {
-  text-align: center;  
+  text-align: center;
 }
 /* The above functioned only when I ran it through replit; a conflict? */
 /* Hide all steps for multi-step form */
 .tab {
   display: none;
+  flex-direction: column;
+  align-items: center;
 }
 /* Circle indicators for form steps */
 .step {
@@ -37,5 +40,13 @@ h3 {
 }
 /* Mark steps that are finished and valid */
 .step.finish {
-  background-color: #04AA6D;
+  background-color: #04aa6d;
+}
+
+.option {
+  display: flex;
+}
+
+.question {
+  text-align: center;
 }

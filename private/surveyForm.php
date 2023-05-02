@@ -26,7 +26,7 @@ if (!isset($_SESSION['loggedin'])) {
 			<!-- 2 current question types, mult choice & free response  -->
 			<?php
 			require_once '../includes/dbc.inc.php'; //causes a 'Hello there' message, is there a better way?
-			
+
 			$surveyID = $_GET['survey_id']; //actual survey id would need to be carried over from browser selection
 			$sql = "SELECT title FROM survey WHERE survey_id = '" . $surveyID . "'";
 			$title = getDataElement($conn, $sql);
@@ -40,7 +40,8 @@ if (!isset($_SESSION['loggedin'])) {
 			for ($i = 0; $i < $limit; $i++) { //limit is no. questions in survey
 				$sql = "SELECT question_text FROM question WHERE question_id ='" . $arr[$i] . "' AND survey_id = '" . $surveyID . "'";
 				$question_text = getDataElement($conn, $sql); //will get this from db
-				echo "<div class='tab'>", $question_text;
+				echo "<div class='tab'>";
+				echo "<p class='question'>" . $question_text . "<p>";
 
 				$sql = "SELECT response_type FROM question WHERE question_id ='" . $arr[$i] . "' AND survey_id = '" . $surveyID . "'";
 				$question_type = getDataElement($conn, $sql); //may also be Multiple Choice; from db
@@ -58,8 +59,10 @@ if (!isset($_SESSION['loggedin'])) {
 						for ($j = 0; $j < $option_limit; $j++) {
 							$sql = "SELECT option_text FROM question_option WHERE option_id = '" . $option_arr[$j] . "' AND question_id = '" . $arr[$i] . "'";
 							$option_text = getDataElement($conn, $sql);
+							echo "<div class='option'>";
 							echo "<input type='radio' name =", $arr[$i], " value='", $option_text, "' oninput='this.className = '''>", $option_text;
 							//name may change from '$i' with backend
+							echo "</div>";
 						}
 						break;
 					default:
@@ -114,7 +117,7 @@ if (!isset($_SESSION['loggedin'])) {
 
 			function displayTab(n) { //function displays a tab of the form, buttons, & step indicator
 				var x = document.getElementsByClassName("tab");
-				x[n].style.display = "block";
+				x[n].style.display = "flex";
 				if (n == 0) {
 					document.getElementById("prevButton").style.display = "none";
 				} else {

@@ -52,4 +52,12 @@
 
 .error {
   color: #ff3333;
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.success {
+  color: #5da806;
+  text-align: center;
+  margin-bottom: 2px;
 }

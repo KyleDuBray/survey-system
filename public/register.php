@@ -37,6 +37,8 @@
             case "userexists":
               echo "<p class=error>Invalid username or email provided.</p>";
               break;
+            case "none":
+              echo "<p class='success'>Account creation successful</p>";
             default:
               break;
           }
